@@ -1,0 +1,95 @@
+﻿<Page x:Class="LoginRegister.Register"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginRegister"
+      mc:Ignorable="d" 
+      d:DesignHeight="600"
+      d:DesignWidth="800"
+      Title="Register"
+      MouseDown="window_MouseDown" 
+      Name="window">
+
+    <Grid>
+        <Image Height="700" Margin="-50,-50,0,0" Width="900" Source="/background.png" Stretch="Fill" >
+            <Image.Effect>
+                <BlurEffect Radius="50"/>
+            </Image.Effect>
+        </Image>
+        <Border BorderThickness="1" Height="480" Width="368" Background="White" CornerRadius="8" HorizontalAlignment="Center" VerticalAlignment="Center"></Border>
+        <Label Content="Register" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="30" Foreground="#FF373737"/>
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Existing user? " FontFamily="UD Digi Kyokasho NP-B" Foreground="#FF373737" FontSize="14"/>
+                    <TextBlock x:Name="register_txt" Text="Log In instead." FontFamily="UD Digi Kyokasho NP-B" Foreground="#FF373737" FontSize="14" TextDecorations="Underline" Cursor="Hand" MouseLeftButtonDown="login_txt_MouseLeftButtonDown"/>
+                </StackPanel>
+
+                <Border x:Name="err_border"  BorderThickness="1" CornerRadius="2" Width="250" Height="50" Margin="0,30,0,0" Visibility="Collapsed" >
+                    <TextBlock x:Name="err_msg" TextAlignment="Center" Foreground="#FF373737" FontFamily="Segoe UI Variable Small Semilight" Margin="10,10,10,10" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                </Border>
+
+                <Border BorderThickness="1.5" Height="35" Width="300" CornerRadius="2" BorderBrush="#FFE6E6E6" Background="WhiteSmoke" Margin="0,30,0,0" >
+                    <StackPanel x:Name="grid_username" Orientation="Horizontal" Focusable="True" >
+                        <Image Source="/icon_user.png" Width="30" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                        <TextBox x:Name="input_username" Width="255" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="UD Digi Kyokasho NP-B" Foreground="#FF373737" Height="20" Margin="5,0,0,0" Text="Username" Opacity="0.5" MaxLength="15" FontSize="18" GotFocus="input_username_GotFocus" LostFocus="input_username_LostFocus"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="1.5" Height="35" Width="300" CornerRadius="2" BorderBrush="#FFE6E6E6" Background="WhiteSmoke" Margin="0,30,0,0" >
+                    <StackPanel x:Name="grid_email" Orientation="Horizontal" Focusable="True" >
+                        <Image Source="/icon_email.png" Width="30" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                        <TextBox x:Name="input_email" Width="255" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="UD Digi Kyokasho NP-B" Foreground="#FF373737" Height="20" Margin="5,0,0,0" Text="Email" Opacity="0.5" FontSize="18" GotFocus="input_email_GotFocus" LostFocus="input_email_LostFocus"/>
+                    </StackPanel>
+                </Border>
+
+                <PasswordBox x:Name="input_password" Width="255" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="UD Digi Kyokasho NP-B" Foreground="#FF373737" Height="20" Margin="40,0,0,0" MaxLength="15" GotFocus="input_password_GotFocus" LostFocus="input_password_LostFocus" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="1" FontSize="14">
+                    <PasswordBox.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="40"/>
+                        </TransformGroup>
+                    </PasswordBox.RenderTransform>
+                </PasswordBox>
+
+                <Border x:Name="grid_password" BorderThickness="1.5" Height="35" Width="300" CornerRadius="2" BorderBrush="#FFE6E6E6" Background="WhiteSmoke" Margin="0,10,0,0">
+                    <StackPanel Orientation="Horizontal" Focusable="True">
+                        <Image Width="30" HorizontalAlignment="Left" Margin="5,0,0,0" Source="/icon_pass.png" />
+                        <TextBlock x:Name="password_placeholder" Width="255" Background="{x:Null}" FontFamily="UD Digi Kyokasho NP-B" Foreground="#FF373737" Height="20" Margin="5,0,0,0" Text="Password" Opacity="0.5" FontSize="18"/>
+                    </StackPanel>
+                </Border>
+
+                <Button Content="Register" Height="35" Width="300" FontFamily="UD Digi Kyokasho NP-B" FontSize="18" Margin="0,30,0,0" Cursor="Hand" Foreground="White" Click="register">
+                    <Button.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF00CE82" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="bg" Background="{TemplateBinding Background}" CornerRadius="2">
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FF00B975" TargetName="bg" />
+                                            </Trigger>
+                                            <Trigger Property="IsMouseCaptured" Value="True">
+                                                <Setter Property="Background" Value="#FF008252" TargetName="bg" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+        <Frame Name="Main" NavigationUIVisibility="Hidden"></Frame>
+    </Grid>
+</Page>
